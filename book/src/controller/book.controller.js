@@ -8,7 +8,7 @@ function getBook(request, response)
     if (book != null)
     respuesta = book;
     else
-    respuesta = {error: true, codigo: 200, mensaje: "El usuario no existe"};
+    respuesta = {error: true, codigo: 200, mensaje: "El libro no existe"};
 
     response.send(respuesta);
 };
@@ -32,7 +32,7 @@ function postBook(request, response)
     }
     else
         respuesta = {error: true, codigo: 200,
-                    mensaje: 'Usuario ya existe'};
+                    mensaje: 'Libro ya existe'};
 
     response.send(respuesta);
 };
@@ -50,11 +50,11 @@ function putBook(request, response)
         book.id_book    =request.body.id_book;
         book.id_user    =request.body.id_user;
         respuesta       = {error:false, codigo: 200,
-                           mensaje:'Usuario actualizado', data: book};
+                           mensaje:'Libro actualizado', data: book};
     }
     else    
         respuesta = {error: true, codigo: 200,
-                    mensaje:'El usuario no existe', data: book};
+                    mensaje:'El libro no existe', data: book};
 
     response.send(respuesta);
 };
