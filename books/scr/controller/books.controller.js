@@ -4,11 +4,12 @@ let books  =  [];
 
 function getBooksId(request, response)
 {   
-    let id = request.query.id_book
+    let id = request.params.id_book
+    console.log(id)
     let respuesta;
-    let book = books.find((book) => book.id_book == id)
-    if (book != null)
-    respuesta = book;
+    let book1 = books.find((book) => book.id_book == id)
+    if (book1 != null)
+    respuesta = book1;
     else
     respuesta = {error: true, codigo: 200, mensaje: "El libro no existe"};
 
@@ -51,7 +52,6 @@ function postBooks(request, response)
 function putBooks(request, response)
 {
     let respuesta;
-    let id=request.query.id_book;
     let book = books.find((book)=> book.id_book == id_book);
     if (book)
     {
@@ -75,7 +75,7 @@ function putBooks(request, response)
 function deleteBooks(request, response)
 {
     let respuesta;
-    let id = request.query.id_book;
+    let id = request.body.id_book;
     let index = books.findIndex((book) => book.id_book === id);
     if (index !== -1) {
         let deletedBook = books.splice(index, 1);
